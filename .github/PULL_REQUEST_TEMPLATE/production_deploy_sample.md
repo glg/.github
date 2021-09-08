@@ -1,4 +1,4 @@
-## Submitter Section (Approver [Checklist](#Approver Section) is at the Bottom)
+## Submitter Section (Approver [Checklist](#approver-section) is at the Bottom)
 
 ### Take all of the following steps
 
