@@ -6,23 +6,29 @@ The following describes actions to be taken or information to be provided. Pleas
 information requested and take all the actions directed. The goal is to produce a PR that is ready-to-go
 and need only be merged once approved.
 
-1. Document details about the change and/or link to any existing documents with that information.
+* Document details about the change and/or link to any existing documents with that information.
+  
+  **insert detail here**
 
-1. Test the change in appropriate development environment
+* Test the change in appropriate development environment
 
-1. List the intended audience for the change.
+  **insert any notes about testing here**
 
-1. List the applications that will be affected by this change.
+* List the intended audience for the change.
 
-1. Provide the date the change is intended to be deployed.
+  **insert audience for change**
 
-1. Notify the appropriate audiences of the change and the timing of deployment.
+* List the applications that will be affected by this change.
+  
+* Provide the date the change is intended to be deployed.
 
-1. Notify the Helpdesk this deployment and it's timing.
+* Notify the appropriate audiences of the change and the timing of deployment.
 
-1. List any known security impacts or risks associated with this change.
+* Notify the Helpdesk this deployment and it's timing.
 
-1. If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
+* List any known security impacts or risks associated with this change.
+
+* If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
 
 
 ## Approver Section

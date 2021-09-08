@@ -1,4 +1,4 @@
-## Submitter Section ([Approver Section](#approver-section) is at the Bottom)
+## Submitter Section (Approver Section is at the Bottom)
 
 ### Take all of the following steps
 
