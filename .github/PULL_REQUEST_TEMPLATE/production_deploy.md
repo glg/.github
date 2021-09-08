@@ -24,7 +24,7 @@ and need only be merged once approved.
 
 * Notify the appropriate audiences of the change and the timing of deployment.
 
-* Notify the Helpdesk this deployment and it's timing.
+* Notify the Helpdesk this deployment and its timing.
 
 * List any known security impacts or risks associated with this change.
 
