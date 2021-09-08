@@ -12,21 +12,29 @@ and need only be merged once approved.
 
 * Test the change in appropriate development environment
 
-  **insert any notes about testing here**
+  **insert any notes about testing here or ignore this if there is nothing to know**
 
 * List the intended audience for the change.
 
   **insert audience for change**
 
 * List the applications that will be affected by this change.
+
+  **applications affected go here"
   
 * Provide the date the change is intended to be deployed.
 
+  **date of intended depolyment goes here**
+
 * Notify the appropriate audiences of the change and the timing of deployment.
 
-* Notify the Helpdesk this deployment and its timing.
+  **Acknowledge that this has been done or provide appropriate detail**
 
+* Notify the Helpdesk this deployment and its timing.
+  
 * List any known security impacts or risks associated with this change.
+
+  **List of security impacts/concerns go here**
 
 * If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
 
