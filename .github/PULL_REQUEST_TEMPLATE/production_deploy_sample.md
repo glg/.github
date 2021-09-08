@@ -8,16 +8,16 @@ and need only be merged once approved.
 
 * Document details about the change and/or link to any existing documents with that information.
 
-  *This is a change to the price-service to integrate a consisten external caching mechanism based
+  **This is a change to the price-service to integrate a consisten external caching mechanism based
   around AWS provided Elasticache (Redis) services. The elasticache cluster has already been created
   in the aws production environment, we simply need to deploy this change in order to take advantage 
-  of it.*
+  of it.**
 
-  *The change itself is necessary because of the way GDS deploys multiple indpenendent instances of
+  **The change itself is necessary because of the way GDS deploys multiple indpenendent instances of
   the application and scales those up/down based on usage. The existing (now previous) version of
   price-service cached this information in process. While this has always caused some problems,
   the external shared cache will be more efficient and consistent and should address all underlying
-  issues caused by the inconsistent cache view inherent to the in process cache model.*
+  issues caused by the inconsistent cache view inherent to the in process cache model.**
 
 
 * Test the change in appropriate development environment
