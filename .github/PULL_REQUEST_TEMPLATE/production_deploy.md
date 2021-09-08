@@ -1,25 +1,33 @@
-## Provide a description of the PR below
+## Submitter Section
 
-1. Document or link to any primary change documents.
+### Take all of the following steps
 
-1. Provide the intended audience for the change.
+The following describes actions to be taken or information to be provided. Please provide all the
+information requested and take all the actions directed. The goal is to produce a PR that is ready-to-go
+and need only be merged once approved.
+
+1. Document details about the change and/or link to any existing documents with that information.
+
+1. Test the change in appropriate development environment
+
+1. List the intended audience for the change.
 
 1. List the applications that will be affected by this change.
 
-1. What date is the change to be deployed?
+1. Provide the date the change is intended to be deployed.
 
 1. Notify the appropriate audiences of the change and the timing of deployment.
 
-1. Notify the Helpdesk this deployment.
-
-1. Test the change in appropriate development environment
+1. Notify the Helpdesk this deployment and it's timing.
 
 1. List any known security impacts or risks associated with this change.
 
 1. If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
 
 
-## Pre Approval Change Management Checklist
+## Approver Section
+
+### Pre Approval Change Management Checklist
 
 The following checklist describes the general criteria required prior to PR approval for a change to a production environment. Once all checklist items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process, all normal code review concerns, checks and other guards may need to be satisfied as well.
 
@@ -34,7 +42,7 @@ The following checklist describes the general criteria required prior to PR appr
 - [ ] Are security impacts or risks documented?
 - [ ] Is Rollback process documented? If ‘git revert’-able no documentation is necessary
 
-## Post Merge (Post Deployment) Change Management Checklist
+### Post Merge (Post Deployment) Change Management Checklist
 
 After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
 
