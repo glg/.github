@@ -22,34 +22,34 @@ and need only be merged once approved.
 
 * Test the change in appropriate development environment
 
-  *The change has been tested both locally and on a DevShip*
+  **The change has been tested both locally and on a DevShip**
 
 * List the intended audience for the change.
 
-  *This initial change will be rolled out to a percentage of all traffic destined for price-service. As
-  the requests chosen will be effectively random there is no specific target audience.*
+  **This initial change will be rolled out to a percentage of all traffic destined for price-service. As
+  the requests chosen will be effectively random there is no specific target audience.**
 
 * List the applications that will be affected by this change.
 
-  *All applications calling price-service in any way, the known apps follow: streamliner, remailer, cohorts, mosaic, pandora and the compliance service.*
+  **All applications calling price-service in any way, the known apps follow: streamliner, remailer, cohorts, mosaic, pandora and the compliance service.**
 
 * Provide the date the change is intended to be deployed.
 
-  *08/13/2021*
+  **08/13/2021**
 
 * Notify the appropriate audiences of the change and the timing of deployment.
 
-  *As there is no predetermined audience for this change, helpdesk will be notified of what to watch for.*
+  **As there is no predetermined audience for this change, helpdesk will be notified of what to watch for.**
 
 * Notify the Helpdesk this deployment and it's timing.
 
-  *Done*
+  **Done**
 
 * List any known security impacts or risks associated with this change.
 
-  *Given that the cache has moved out-of-process, sensitive data is potentitally stored in an external location
+  **Given that the cache has moved out-of-process, sensitive data is potentitally stored in an external location
   accessible independently from the price-service application. Standard configuration of the Redis instance and
-  access limitations have been applied and security has been notified of this new data storage location.*
+  access limitations have been applied and security has been notified of this new data storage location.**
 
 * If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
 
