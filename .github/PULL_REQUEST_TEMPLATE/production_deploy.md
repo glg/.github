@@ -6,7 +6,7 @@ The following checklist describes the general criteria required prior to PR appr
 
 - [ ] Is Original change request document linked or otherwise included?
 - [ ] Is the change audience documented?
-- [ ] Document intended deployment date.
+- [ ] Is the deployment date documented? 
 - [ ] Have the appropriate audiences been notified of the change?
 - [ ] Has Helpdesk been notified of the change?
 - [ ] Has change been tested in development environment (Beta, DevShip, whatever is appropriate)?
