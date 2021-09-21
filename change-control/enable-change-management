@@ -1,0 +1,54 @@
+#! /usr/bin/env bash
+set -e
+MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+REPO_URL="${1?You need to specify a valid git url for the repo to be updated}"
+declare -a SHUTDOWN_COMMANDS
+function setExitMessage () {
+  MESSAGE="${@}"
+}
+function clearExitMessage () {
+  MESSAGE=""
+}
+function shutdown() {
+  test -n "${MESSAGE}" && echo "${MESSAGE}"
+  if [ -z "${MESSAGE}" ]; then
+    for c in "${SHUTDOWN_COMMANDS[@]}"; do
+      ${c}
+    done
+  fi
+}
+trap "shutdown" EXIT
+
+setExitMessage "Error encountered while creating temporary directory"
+TMP_DIR=$(mktemp -d -q)
+SHUTDOWN_COMMANDS+=("rm -rf ${TMP_DIR}")
+clearExitMessage
+
+echo "Working in: ${TMP_DIR}"
+
+setExitMessage "Error during clone of repo"
+pushd ${TMP_DIR} && git clone "${REPO_URL}" "${TMP_DIR}/repo"
+pushd "${TMP_DIR}/repo"
+clearExitMessage
+
+# We'll expect to be run in the context of a repo to be 'enabled'
+# with change management things.
+setExitMessage "Error creating .github directory in repo"
+mkdir -p ./.github/
+clearExitMessage
+
+setExitMessage "Error trying to create branch for addition of PR template"
+git checkout -b add-pr-template
+clearExitMessage
+
+# we will go get the current version of the PR template from its home
+setExitMessage "Encountered a problem fetching the PR template"
+curl -o ./.github/pull_request_template.md 'https://raw.githubusercontent.com/glg/.github/main/.github/PULL_REQUEST_TEMPLATE/production_deploy.md'
+clearExitMessage
+
+setExitMessage "Error committing template to repo"
+git add .
+git commit -am "Adding PR template to repository"
+git push origin add-pr-template
+clearExitMessage
+
