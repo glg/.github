@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+set -e
+MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "${MY_DIR}/common.sh"
+HQ_REPO="${1?You need to provide a gith url to a starphleet HQ}"
+
+setExitMessage "Error encountered while creating temporary directory"
+TMP_DIR=$(mktemp -d -q)
+echo "Work dir: ${TMP_DIR}"
+SHUTDOWN_COMMANDS+=("rm -rf ${TMP_DIR}")
+clearExitMessage
+
+
+
+
