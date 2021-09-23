@@ -6,10 +6,99 @@ HQ_REPO="${1?You need to provide a gith url to a starphleet HQ}"
 
 setExitMessage "Error encountered while creating temporary directory"
 TMP_DIR=$(mktemp -d -q)
-echo "Work dir: ${TMP_DIR}"
 SHUTDOWN_COMMANDS+=("rm -rf ${TMP_DIR}")
 clearExitMessage
 
+setExitMessage "Error cloning HQ"
+pushd ${TMP_DIR} > /dev/null 2>&1
+git clone --depth 1 "${HQ_REPO}" ./repo > /dev/null 2>&1
+pushd ./repo > /dev/null 2>&1
+clearExitMessage
+
+export HEADQUARTERS_LOCAL="${TMP_DIR}/repo"
+
+################################################################################
+## function stubs and other default (but generally fake) values for things
+## to simply assist in successfully sourcing orders files
+function nginx_location_configs(){
+  :
+}
+export -f nginx_location_configs
+function proxy_for() {
+  :
+}
+export -f proxy_for
+function redirect() {
+  :
+}
+export -f redirect
+function redirect_to() {
+  :
+}
+export -f redirect_to
+function add_header() {
+  :
+}
+export -f add_header
+function log_to_stderr() {
+  :
+}
+export -f log_to_stderr
+function enable_cache_endpoint() {
+  :
+}
+export -f enable_cache_endpoint
+function beta() {
+  :
+}
+export -f beta
+function unpublished() {
+  :
+}
+export -f unpublished
+function stop_before_autodeploy() {
+  :
+}
+export -f stop_before_autodeploy
+# this is JIC so we don't get something weird happening
+function git() {
+  :
+} 
+export -f git
+function secrets() {
+    :
+}
+export -f secrets
+function fromJson() {
+    :
+}
+export -f fromJson
+function aws() {
+    :
+}
+export -f aws
+function add_response_header() {
+    :
+}
+export -f add_response_header
+
+function autodeploy() {
+    printf "${@}\n"
+}
+export -f autodeploy
+function echo() {
+    :
+}
+export -f echo
+# This is set because we apparently have some orders that check for it, and if
+# it's not present call 'exit'
+export STARPHLEET_EC2_REGION="None"
+################################################################################
 
 
-
+for order in $(find . -name 'orders' -type f);
+do
+    SERVICE_NAME=$(basename $(dirname ${order}))
+    AUTODEPLOY_ARGS=$(bash -c "source .starphleet ; source ${order}")
+    printf "${SERVICE_NAME} | ${AUTODEPLOY_ARGS}\n"
+done
