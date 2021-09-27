@@ -29,8 +29,6 @@ and need only be merged once approved.
 * Notify the appropriate audiences of the change and the timing of deployment.
 
   **Acknowledge that this has been done or provide appropriate detail**
-
-* Notify the Helpdesk this deployment and its timing.
   
 * List any known security impacts or risks associated with this change.
 
@@ -49,7 +47,6 @@ The following checklist describes the general criteria required prior to PR appr
 - [ ] Is the change audience documented?
 - [ ] Is the deployment date documented? 
 - [ ] Have the appropriate audiences been notified of the change?
-- [ ] Has Helpdesk been notified of the change?
 - [ ] Has change been tested in development environment (Beta, DevShip, whatever is appropriate)?
 - [ ] Is the change labeled ‘Emergency’ if necessary?
 - [ ] Are impacted applications listed?
