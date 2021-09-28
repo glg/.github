@@ -6,35 +6,37 @@ The following describes actions to be taken or information to be provided. Pleas
 information requested and take all the actions directed. The goal is to produce a PR that is ready-to-go
 and need only be merged once approved.
 
-* Document details about the change and/or link to any existing documents with that information.
-  
-  **insert detail here**
+#### Document details about the change and/or link to any existing documents with that information.
 
-* Test the change in appropriate development environment
+> *insert detail here*
 
-  **insert any notes about testing here or ignore this if there is nothing to know**
+#### Test the change in appropriate development environment
 
-* List the intended audience for the change.
+> *insert any notes about testing here or ignore this if there is nothing to know*
 
-  **insert audience for change**
+#### List the intended audience for the change.
 
-* List the applications that will be affected by this change.
+> *insert audience for change*
 
-  **applications affected go here"
-  
-* Provide the date the change is intended to be deployed.
+#### List the applications that will be affected by this change.
 
-  **date of intended depolyment goes here**
+> *applications affected go here*
 
-* Notify the appropriate audiences of the change and the timing of deployment.
+#### Provide the date the change is intended to be deployed.
 
-  **Acknowledge that this has been done or provide appropriate detail**
-  
-* List any known security impacts or risks associated with this change.
+> *date of intended deployment goes here*
 
-  **List of security impacts/concerns go here**
+#### Notify the appropriate audiences of the change and the timing of deployment.
 
-* If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
+> *Acknowledge that this has been done or provide appropriate detail*
+
+#### List any known security impacts or risks associated with this change.
+
+> *List of security impacts/concerns go here*
+
+#### If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
+
+---
 
 
 ## Approver Section
