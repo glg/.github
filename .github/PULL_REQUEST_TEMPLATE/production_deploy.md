@@ -1,57 +1,62 @@
 ## Submitter Section
 
-### Take all of the following steps
+*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved.*
 
-The following describes actions to be taken or information to be provided. Please provide all the
-information requested and take all the actions directed. The goal is to produce a PR that is ready-to-go
-and need only be merged once approved.
+#### Document details about the change and/or link to any existing documents with that information.
 
-* Document details about the change and/or link to any existing documents with that information.
-  
-  **insert detail here**
+> *insert detail here*
 
-* Test the change in appropriate development environment
+#### Provide the date the change is intended to be deployed.
 
-  **insert any notes about testing here or ignore this if there is nothing to know**
+> *date of intended deployment goes here*
 
-* List the intended audience for the change.
+#### Test the change in appropriate development environment
 
-  **insert audience for change**
+> *insert any notes about testing here or ignore this if there is nothing to know*
 
-* List the applications that will be affected by this change.
+#### List the applications that will be affected by this change.
 
-  **applications affected go here"
-  
-* Provide the date the change is intended to be deployed.
+- 
 
-  **date of intended depolyment goes here**
+#### List the intended audience for the change.
 
-* Notify the appropriate audiences of the change and the timing of deployment.
+*The audience is generally not the reviewers who will approve the PR, but the consumers of the change*
 
-  **Acknowledge that this has been done or provide appropriate detail**
-  
-* List any known security impacts or risks associated with this change.
+- 
 
-  **List of security impacts/concerns go here**
+#### Notify the appropriate audiences of the change and the timing of deployment.
 
-* If and ONLY if this change cannot be rolled back with a simple 'git revert', document the rollback procedures.
+*Provide details showing that the intended audience has been notified, or why they don't need to be notified*
 
+#### List any known security impacts or risks associated with this change.
+
+- 
+
+#### If and ONLY if this change cannot be rolled back with a simple 'git revert', document the updated rollback procedures.
+
+- This PR only requires a GIT revert to be rolled back
+
+---
 
 ## Approver Section
 
-### Pre Approval Change Management Checklist
+*The approver section is meant some someone other than the PR creator.*
 
-The following checklist describes the general criteria required prior to PR approval for a change to a production environment. Once all checklist items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process, all normal code review concerns, checks and other guards may need to be satisfied as well.
+### Pre-Approval Change Management Checklist
 
-- [ ] Is Original change request document linked or otherwise included?
-- [ ] Is the change audience documented?
-- [ ] Is the deployment date documented? 
-- [ ] Have the appropriate audiences been notified of the change?
-- [ ] Has change been tested in development environment (Beta, DevShip, whatever is appropriate)?
+General criteria required prior to PR approval for a change to a production environment. Once all checklist items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well.
+
+- [ ] Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
+- [ ] Is the [deployment date](#provide-the-date-the-change-is-intended-to-be-deployed) documented? 
+- [ ] Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
+- [ ] Have the [appropriate audiences](#notify-the-appropriate-audiences-of-the-change-and-the-timing-of-deployment) been notified of the change?
+- [ ] Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
+- [ ] Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
 - [ ] Is the change labeled ‘Emergency’ if necessary?
-- [ ] Are impacted applications listed?
-- [ ] Are security impacts or risks documented?
-- [ ] Is Rollback process documented? If ‘git revert’-able no documentation is necessary
+- [ ] Are [security impacts or risks](#list-any-known-security-impacts-or-risks-associated-with-this-change) documented?
+- [ ] Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
+
+---
 
 ### Post Merge (Post Deployment) Change Management Checklist
 
