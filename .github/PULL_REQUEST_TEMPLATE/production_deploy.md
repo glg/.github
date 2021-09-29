@@ -26,7 +26,7 @@
 
 #### Notify the appropriate audiences of the change and the timing of deployment.
 
-*Provide details showing that the intended audience has been notified, or why they don't need to be notified*
+> *Provide details showing that the intended audience has been notified, or why they don't need to be notified*
 
 #### List any known security impacts or risks associated with this change.
 
