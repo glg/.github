@@ -1,4 +1,4 @@
-## Submitter Section
+## Submitter Section (To be filled out on PR creation)
 
 *The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved.*
 
@@ -38,7 +38,7 @@
 
 ---
 
-### Post Merge (Post Deployment) Change Management Checklist
+### Post Merge and Deploymet Checklist
 
 After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
 
