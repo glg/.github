@@ -47,6 +47,8 @@ After a PR for a change targeting a production environment is merged, we need to
 
 ---
 
+---
+
 ## Approver Section
 
 *The approver must be some someone other than the PR creator.*
