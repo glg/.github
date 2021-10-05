@@ -38,6 +38,15 @@
 
 ---
 
+### Post Merge (Post Deployment) Change Management Checklist
+
+After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
+
+- [ ] Change has been verified working in production
+- [ ] Formally close the change, this is accomplished by adding a comment to this PR 'conversation'. The text here in square brackets can even be used as the contents of that comment: [ The features and functionality provided by this PR have been verified to be functioning as expected in the production environment. ]
+
+---
+
 ## Approver Section
 
 *The approver section is meant some someone other than the PR creator.*
@@ -56,11 +65,3 @@ General criteria required prior to PR approval for a change to a production envi
 - [ ] Are [security impacts or risks](#list-any-known-security-impacts-or-risks-associated-with-this-change) documented?
 - [ ] Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
 
----
-
-### Post Merge (Post Deployment) Change Management Checklist
-
-After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
-
-- [ ] Change has been verified working in production
-- [ ] Formally close the change, this is accomplished by adding a comment to this PR 'conversation'. The text here in square brackets can even be used as the contents of that comment: [ The features and functionality provided by this PR have been verified to be functioning as expected in the production environment. ]
