@@ -1,4 +1,4 @@
-More detail about all this can be found [here](https://github.com/glg/change-control/wiki/Change-Management)
+[What is all this?](https://github.com/glg/change-control/wiki/Change-Management)
 
 ## Submitter Section (To be filled out on PR creation)
 
