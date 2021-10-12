@@ -1,3 +1,5 @@
+#### More Change Management info [here](https://github.com/glg/change-control/wiki/Change-Management)
+
 ## Submitter Section (To be filled out on PR creation)
 
 *The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved.*
