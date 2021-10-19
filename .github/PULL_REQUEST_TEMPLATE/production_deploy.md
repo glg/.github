@@ -40,7 +40,7 @@
 
 ---
 
-### Post Merge and Deploymet Checklist
+### Post Merge and Deployment Checklist
 
 After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
 
