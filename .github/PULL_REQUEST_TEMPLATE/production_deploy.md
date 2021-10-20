@@ -8,10 +8,6 @@
 
 > *insert detail here*
 
-#### Provide the date the change is intended to be deployed.
-
-> *date of intended deployment goes here*
-
 #### Test the change in appropriate development environment
 
 > *insert any notes about testing here or ignore this if there is nothing to know*
@@ -60,7 +56,6 @@ After a PR for a change targeting a production environment is merged, we need to
 General criteria required prior to PR approval for a change to a production environment. Once all checklist items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well.
 
 - [ ] Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
-- [ ] Is the [deployment date](#provide-the-date-the-change-is-intended-to-be-deployed) documented? 
 - [ ] Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
 - [ ] Have the [appropriate audiences](#notify-the-appropriate-audiences-of-the-change-and-the-timing-of-deployment) been notified of the change?
 - [ ] Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
