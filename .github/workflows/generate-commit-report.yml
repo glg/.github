@@ -23,6 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          (
           set -e
           REPO="${{ github.repository }}"
           SINCE="$(date --date "-30 days" +"%Y-%m-%d")"
@@ -49,6 +50,7 @@ jobs:
               printf "\"%s|%s|%s|%s|%s\"\n" "${PR_COLUMNS}" "${APPROVING_REVIEW_COLUMNS}" "${IS_EMERGENCY}" "${SYSTEM_TAGS}" "${SHA}" | sed -e 's/|/","/g'
             fi
           done < <(gh api -X GET -f since="${SINCE}" -f per_page=100 --paginate /repos/${REPO}/commits | jq --raw-output '.[] | .sha + "|"+ .commit.author.name + "|"+ .commit.author.date')
+          ) > ${FILE_NAME}
 
       - name: Archive things
         uses: actions/upload-artifact@v2
