@@ -47,7 +47,7 @@ jobs:
               APPROVING_REVIEW_COLUMNS="$(echo "${APPROVING_REVIEW_INFO}" | jq --raw-output 'if (. | length > 0) then [.[] | select(.state=="APPROVED")][0] | .user.login+"|"+.state+"|"+.submitted_at else "||" end')"
               printf "\"%s|%s|%s|%s|%s\"\n" "${PR_COLUMNS}" "${APPROVING_REVIEW_COLUMNS}" "${IS_EMERGENCY}" "${SYSTEM_TAGS}" "${SHA}" | sed -e 's/|/","/g'
             fi
-          done < <(gh api -X GET -f since="${SINCE}" -f per_page=100 --paginate /repos/${REPO}/commits | jq --raw-output '.[] | .sha + "|"+ .commit.author.name + "|"+ .commit.author.date')
+          done < <(gh api -X GET -f since="${{ env.SINCE }}" -f per_page=100 --paginate /repos/${{ env.REPO }}/commits | jq --raw-output '.[] | .sha + "|"+ .commit.author.name + "|"+ .commit.author.date')
           ) > ${FILE_NAME}
 
       - name: Archive things
