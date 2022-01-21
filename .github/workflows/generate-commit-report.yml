@@ -19,6 +19,7 @@ jobs:
       FILE_NAME: ${{ needs.setup.outputs.file_name }}
     steps:
       - name: generate the report 
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
