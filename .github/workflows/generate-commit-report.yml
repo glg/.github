@@ -1,5 +1,8 @@
 name: Generate Commit Report
 
+on:
+  workflow_call:
+
 jobs:
   setup:
     runs-on: ubuntu-latest
