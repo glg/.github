@@ -17,6 +17,7 @@ jobs:
     env:
       REPO: ${{ github.repository }}
       FILE_NAME: ${{ needs.setup.outputs.file_name }}
+      SINCE: "$(date --date "-30 days" +"%Y-%m-%d")"
     steps:
       - name: generate the report 
         shell: bash
@@ -25,9 +26,6 @@ jobs:
         run: |
           (
           set -e
-          REPO="${{ github.repository }}"
-          SINCE="$(date --date "-30 days" +"%Y-%m-%d")"
-
           # first, our header row
           printf '"PR Number","PR Submitter Login","PR Merged By Login","PR Created Date","PR Merged Date","PR URL","Reviewer Login","Review State","Review Submit Date","Is Emergency","Systems","Commit SHA"\n'
 
