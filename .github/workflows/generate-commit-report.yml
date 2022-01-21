@@ -17,7 +17,7 @@ jobs:
     env:
       REPO: ${{ github.repository }}
       FILE_NAME: ${{ needs.setup.outputs.file_name }}
-      SINCE: "$(date --date "-30 days" +"%Y-%m-%d")"
+      SINCE: $(date --date "-30 days" +"%Y-%m-%d")
     steps:
       - name: generate the report 
         shell: bash
