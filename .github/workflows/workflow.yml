@@ -1,0 +1,26 @@
+name: Generate Commit Report
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      file_name: ${{ steps.step1.outputs.filename }}
+    steps:
+      - id: step1
+        run: echo "::set-output name=filename::${{ github.workspace }}/$(date  +"%Y%m%d")-commits-$( echo "${{ github.repository }}" | tr "/" "_" ).json"
+  reports:
+    runs-on: ubuntu-latest
+    needs: setup
+    env:
+      REPO: ${{ github.repository }}
+      FILE_NAME: ${{ needs.setup.outputs.file_name }}
+    steps:
+      - name: generate the report 
+        run: ${{ github.workspace }}/.github/bin/pulls-for-commits ${{ github.repository }} > ${FILE_NAME}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Archive things
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: ${{ env.FILE_NAME }} 

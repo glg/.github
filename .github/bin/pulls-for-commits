@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+set -e
+REPO="${1?You must provide a repository in <owner>/<repo> format}"
+SINCE="${DATE_RANGE_START:-$(date --date "-30 days" +"%Y-%m-%d")}"
+
+# first, our header row
+printf '"PR Number","PR Submitter Login","PR Merged By Login","PR Created Date","PR Merged Date","PR URL","Reviewer Login","Review State","Review Submit Date","Is Emergency","Systems","Commit SHA"\n'
+
+while IFS="|" read -r SHA AUTHOR COMMIT_DATE
+do
+  PR_NUMBER="$(gh api /repos/${REPO}/commits/${SHA}/pulls | jq --raw-output '.[].number')"
+  if [ -z "${PR_NUMBER}" ]; then
+    printf '"%s","","","","","","","","","","","%s"\n' "None" "${SHA}"
+  else
+    # PR_INFO is a pipe delimted string of
+    PULL_INFO="$(gh api /repos/${REPO}/pulls/${PR_NUMBER})"
+    #  PR Number | PR Submitter Login | PR Merged By Login | PR Created Date | PR Merged Date | PR URL
+    PR_COLUMNS=$(echo "${PULL_INFO}" | jq --raw-output '(.number | tostring) + "|"+.user.login+"|" + .merged_by.login+"|"+.created_at+"|"+.merged_at+"|"+._links.html.href')
+    IS_EMERGENCY="$(echo "${PULL_INFO}" | jq --raw-output '([.labels[].name] | contains(["testing"])) | tostring')"
+    SYSTEM_TAGS="$(echo "${PULL_INFO}" | jq --raw-output '[.labels[].name] | del(.[index("change")?, index("emergency")?]) | .[]')"
+    #APPROVING_REVIEW_INFO is a pipe delimeted string of
+    #  Reviewer Login | Review State | Review Submit Date
+    APPROVING_REVIEW_INFO="$(gh api /repos/${REPO}/pulls/${PR_NUMBER}/reviews)"
+    APPROVING_REVIEW_COLUMNS="$(echo "${APPROVING_REVIEW_INFO}" | jq --raw-output 'if (. | length > 0) then [.[] | select(.state=="APPROVED")][0] | .user.login+"|"+.state+"|"+.submitted_at else "||" end')"
+    printf "\"%s|%s|%s|%s|%s\"\n" "${PR_COLUMNS}" "${APPROVING_REVIEW_COLUMNS}" "${IS_EMERGENCY}" "${SYSTEM_TAGS}" "${SHA}" | sed -e 's/|/","/g'
+  fi
+done < <(gh api -X GET -f since="${SINCE}" -f per_page=100 --paginate /repos/${REPO}/commits | jq --raw-output '.[] | .sha + "|"+ .commit.author.name + "|"+ .commit.author.date')
