@@ -37,8 +37,10 @@
 
 After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
 
-- [ ] Change has been verified working in production
-- [ ] Formally close the change, this is accomplished by adding a comment to this PR 'conversation'. The text here in square brackets can even be used as the contents of that comment: [ The features and functionality provided by this PR have been verified to be functioning as expected in the production environment. ]
+To track that the change has been verified to be working in production as intended, please apply the label '2 - Deployment Verified' to this PR.
+
+- Change has been verified working in production
+- Formally close the change, this is accomplished by adding a comment to this PR 'conversation'. The text here in square brackets can even be used as the contents of that comment: [ The features and functionality provided by this PR have been verified to be functioning as expected in the production environment. ]
 
 ---
 
@@ -50,14 +52,16 @@ After a PR for a change targeting a production environment is merged, we need to
 
 ### Pre-Approval Change Management Checklist
 
-General criteria required prior to PR approval for a change to a production environment. Once all checklist items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well.
+General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
-- [ ] Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
-- [ ] Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
-- [ ] Have the [appropriate audiences](#notify-the-appropriate-audiences-of-the-change-and-the-timing-of-deployment) been notified of the change?
-- [ ] Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
-- [ ] Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
-- [ ] Is the change labeled ‘Emergency’ if necessary?
-- [ ] Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
+To track that all the requirements have been addressed please apply the label '1 - Change Data Provided' to this PR.
+
+- Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
+- Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
+- Have the [appropriate audiences](#notify-the-appropriate-audiences-of-the-change-and-the-timing-of-deployment) been notified of the change?
+- Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
+- Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
+- Is the change labeled ‘Emergency’ if necessary?
+- Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
 
 [//]: <> (This is a hidden indicator used to help identify PRs using this template: d7ffeb8bd9f84f169ea3694cf410fdcc)
