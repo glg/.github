@@ -45,7 +45,7 @@ To track that the change has been verified to be working in production as intend
 
 ## Approver Section | *The approver must be someone other than the PR creator.*
 
-### Pre-Approval Change Management Checklist
+### Change Management Checklist
 
 General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
