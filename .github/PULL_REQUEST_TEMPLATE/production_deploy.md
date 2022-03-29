@@ -33,11 +33,9 @@
 
 ---
 
-### Post Merge and Deployment Checklist
+### Post Merge Deployment Verification
 
-After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
-
-To track that the change has been verified to be working in production as intended, please apply the label '2 - Deployment Verified' to this PR.
+After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. To track that the change has been verified to be working in production as intended, please apply the label '2 - Deployment Verified' to this PR.
 
 ---
 
