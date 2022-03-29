@@ -47,7 +47,7 @@ After a PR is merged, we need to verify that it indeed made it into production a
 
 General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
-Once all the requirements have been addressed please apply the label '1 - Change Data Provided' to this PR.
+Once all the requirements have been addressed please apply the label **'1 - Change Data Provided'** to this PR.
 
 - Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
 - Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
