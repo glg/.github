@@ -35,7 +35,7 @@
 
 ### Post Merge Deployment Verification
 
-After a PR is merged, we need to verify that it indeed made it into production as intended. To track that the change has been verified to be working in production as intended, please apply the label '2 - Deployment Verified' to this PR.
+After a PR is merged, we need to verify that it indeed made it into production as intended. To track that the change has been verified to be working in production as intended, please apply the label **2 - Deployment Verified** to this PR.
 
 ---
 
