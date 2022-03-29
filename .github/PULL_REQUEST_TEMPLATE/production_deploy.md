@@ -2,7 +2,7 @@
 
 ## Submitter Section (To be filled out on PR creation)
 
-*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved.*
+*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved. In cases where information or actions do not apply, a simple 'N/A' is acceptable and should be used to inicate the particular action or step is.... Not Applicable.*
 
 #### Document details about the change and/or link to any existing documents with that information.
 
@@ -38,9 +38,6 @@
 After a PR for a change targeting a production environment is merged, we need to verify that it indeed made it out as intended. The following checklist is intended to facilitate tracking of that verification.
 
 To track that the change has been verified to be working in production as intended, please apply the label '2 - Deployment Verified' to this PR.
-
-- Change has been verified working in production
-- Formally close the change, this is accomplished by adding a comment to this PR 'conversation'. The text here in square brackets can even be used as the contents of that comment: [ The features and functionality provided by this PR have been verified to be functioning as expected in the production environment. ]
 
 ---
 
