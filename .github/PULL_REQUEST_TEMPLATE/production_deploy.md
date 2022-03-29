@@ -41,7 +41,7 @@ After a PR is merged, we need to verify that it indeed made it into production a
 
 ---
 
-## Approver Section | *The approver must be someone other than the PR creator.*
+## Approver Section (*The approver must be someone other than the PR creator.*)
 
 ### Change Management Checklist
 
