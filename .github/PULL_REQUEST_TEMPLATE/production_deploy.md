@@ -2,7 +2,7 @@
 
 ## Submitter Section (To be filled out on PR creation)
 
-*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved. In cases where information or actions do not apply, a simple 'N/A' is acceptable and should be used to inicate the particular action or step is.... Not Applicable.*
+*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. The goal is to produce a PR that is ready-to-go and need only be merged once approved. In cases where information or actions do not apply, a simple 'N/A' is acceptable and should be used to inicate the particular action or step is...(wait for it).... Not Applicable.*
 
 #### Document details about the change and/or link to any existing documents with that information.
 
