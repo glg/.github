@@ -45,7 +45,7 @@ After a PR is merged, we need to verify that it indeed made it into production a
 
 ### Change Management Checklist
 
-General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver in meeting the requirements of our Change Management process.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
+General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver validating the requirements of our Change Management process have been met.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
 Once all the requirements have been addressed please apply the label **'1 - Change Data Provided'** to this PR.
 
