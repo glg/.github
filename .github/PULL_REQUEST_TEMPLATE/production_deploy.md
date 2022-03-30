@@ -59,6 +59,6 @@ Once all the requirements have been addressed simply add your approving review. 
 - Is the change labeled ‘Emergency’ if necessary?
 - Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
 
-[Change Management Wiki](https://github.com/glg/change-control/wiki/Change-Management)
+Change Management [Wiki](https://github.com/glg/change-control/wiki/Change-Management) provides more info.
 
 [//]: <> (This is a hidden indicator used to help identify PRs using this template: d7ffeb8bd9f84f169ea3694cf410fdcc)
