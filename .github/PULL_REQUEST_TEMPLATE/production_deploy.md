@@ -2,9 +2,6 @@
 
 This is now easier than ever! Now just start with your PR in Draft. Once everything is ready, including providing all the Change Management data click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
 
-
-[What is all this?](https://github.com/glg/change-control/wiki/Change-Management)
-
 ## Submitter Section (To be filled out on PR creation)
 
 *The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. In cases where information or actions do not apply, a simple 'N/A' is acceptable and should be used to inicate the particular action or step is...(wait for it).... Not Applicable.*
@@ -61,5 +58,7 @@ Once all the requirements have been addressed simply add your approving review. 
 - Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
 - Is the change labeled ‘Emergency’ if necessary?
 - Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
+
+[Change Management Wiki](https://github.com/glg/change-control/wiki/Change-Management)
 
 [//]: <> (This is a hidden indicator used to help identify PRs using this template: d7ffeb8bd9f84f169ea3694cf410fdcc)
