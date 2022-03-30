@@ -1,3 +1,6 @@
+TLDR; This is now easier than ever! Now just start with your PR in Draft. Once everything is ready, including providing all the Change Management data click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
+
+
 [What is all this?](https://github.com/glg/change-control/wiki/Change-Management)
 
 ## Submitter Section (To be filled out on PR creation)
@@ -35,7 +38,7 @@
 
 ### Post Merge Deployment Verification
 
-After a PR is merged, we need to verify that it indeed made it into production as intended. To track that the change has been verified to be working in production as intended, please apply the label **'2 - Deployment Verified'** to this PR.
+After a PR is merged, we need to verify that it indeed made it into production as intended. To track that the change has been verified to be working in production as intended, please apply the label **'1 - Deployment Verified'** to this PR.
 
 ---
 
@@ -47,7 +50,7 @@ After a PR is merged, we need to verify that it indeed made it into production a
 
 General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver validating the requirements of our Change Management process have been met.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
-Once all the requirements have been addressed please apply the label **'1 - Change Data Provided'** to this PR.
+Once all the requirements have been addressed simply add your approving review. The standard GitHub PR (approving) review now serves to indicate all change management requirements have been met.
 
 - Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
 - Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
