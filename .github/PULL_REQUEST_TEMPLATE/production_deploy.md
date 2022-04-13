@@ -2,9 +2,7 @@
 
 This is now easier than ever! Now just start with your PR in **Draft**. Once everything is ready, including providing all the Change Management data click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
 
-## Submitter Section (To be filled out on PR creation)
-
-*The submitter section is meant for the person creating the PR.  Please provide all the information requested and take ALL the actions directed. In cases where information or actions do not apply, a simple 'N/A' is acceptable and should be used to inicate the particular action or step is...(wait for it).... Not Applicable.*
+## Submitter Section (To be filled out on PRIOR to PR Review)
 
 #### Document details about the change and/or link to any existing documents with that information.
 
@@ -22,7 +20,7 @@ This is now easier than ever! Now just start with your PR in **Draft**. Once eve
 
 *The audience is generally not the reviewers who will approve the PR, but the consumers of the change*
 
-- *list impacted audience here"
+- *list impacted audience here*
 
 #### Notify the appropriate audiences of the change and the timing of deployment.
 
@@ -49,7 +47,7 @@ After a PR is merged, we need to verify that it indeed made it into production a
 
 General criteria required prior to PR approval for a change to a production environment. Once all items are satisfied, an approval can be granted. This is not exhaustive, and is only designed facilitate the approver validating the requirements of our Change Management process have been met.  All normal code review concerns, checks and other guards may need to be satisfied as well. 
 
-Once all the requirements have been addressed simply add your approving review. The standard GitHub PR (approving) review now serves to indicate all change management requirements have been met.
+Once all the requirements have been addressed simply add your approving review. The standard GitHub PR (approving) review now serves to indicate the reviewer's assertion that all change management requirements have been met.
 
 - Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
 - Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
