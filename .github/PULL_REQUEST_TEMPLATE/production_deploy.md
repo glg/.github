@@ -1,6 +1,6 @@
-## TLDR;
+## TLDR; (Now with more simplicity)
 
-This is now easier than ever! Now just start with your PR in **Draft**. Once everything is ready, including providing all the Change Management data click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
+Just start with your PR in **Draft**. Once everything is ready, including providing all the Change Management data click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
 
 ## Submitter Section (To be filled out on PRIOR to PR Review)
 
