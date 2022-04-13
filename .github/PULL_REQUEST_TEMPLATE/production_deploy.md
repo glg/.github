@@ -20,7 +20,7 @@ Just start with your PR in **Draft**. Once everything is ready, including provid
 
 *The audience is generally not the reviewers who will approve the PR, but the consumers of the change*
 
-- *replace this with intended audience*
+- *replace this with the list of those expected to consume the change*
 
 #### Notify the appropriate audiences of the change and the timing of deployment.
 
