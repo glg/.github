@@ -1,4 +1,4 @@
-## TLDR; (Now with more simplicity)
+## TLDR; (Now easier!)
 
 Just start with your PR in **Draft**. Once everything is ready, including providing all the Change Management data, click 'Ready for Review'. Once the PR is approved, and verified to have been successfully deployed to production add the label **'1 - Deployment Verified'**. That's it, no more checkboxes!!!
 
