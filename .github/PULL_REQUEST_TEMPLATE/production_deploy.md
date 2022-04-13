@@ -50,10 +50,10 @@ General criteria required prior to PR approval for a change to a production envi
 Once all the requirements have been addressed simply add your approving review. The standard GitHub PR (approving) review now serves to indicate the reviewer's assertion that all change management requirements have been met.
 
 - Is original [change request document](#document-details-about-the-change-andor-link-to-any-existing-documents-with-that-information) linked, or otherwise included?
+- Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
+- Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
 - Is the [change audience](#list-the-applications-that-will-be-affected-by-this-change) documented?
 - Have the [appropriate audiences](#notify-the-appropriate-audiences-of-the-change-and-the-timing-of-deployment) been notified of the change?
-- Are [impacted applications](#list-the-applications-that-will-be-affected-by-this-change) listed?
-- Has change been [tested in development](#test-the-change-in-appropriate-development-environment) environment (Beta, DevShip, whatever is appropriate)?
 - Is the change labeled ‘Emergency’ if necessary?
 - Is [Rollback process](#if-and-only-if-this-change-cannot-be-rolled-back-with-a-simple-git-revert-document-the-rollback-procedures) documented? If ‘git revert’-able no documentation is necessary
 
