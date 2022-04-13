@@ -14,7 +14,7 @@ Just start with your PR in **Draft**. Once everything is ready, including provid
 
 #### List the applications that will be affected by this change.
 
-- *replace this with the list of applications impacted by this change*
+- *replace this with the list of other applications impacted by this change*
 
 #### List the intended audience for the change.
 
