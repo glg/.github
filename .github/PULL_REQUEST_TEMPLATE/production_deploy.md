@@ -16,17 +16,17 @@ This is now easier than ever! Now just start with your PR in **Draft**. Once eve
 
 #### List the applications that will be affected by this change.
 
-- 
+- *list affected applications here*
 
 #### List the intended audience for the change.
 
 *The audience is generally not the reviewers who will approve the PR, but the consumers of the change*
 
-- 
+- *list impacted audience here"
 
 #### Notify the appropriate audiences of the change and the timing of deployment.
 
-*Provide details showing that the intended audience has been notified, or why they don't need to be notified*
+> *Provide details showing that the intended audience has been notified, or why they don't need to be notified*
 
 
 #### If and ONLY if this change cannot be rolled back with a simple 'git revert', document the updated rollback procedures.
