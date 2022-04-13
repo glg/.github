@@ -6,25 +6,25 @@ Just start with your PR in **Draft**. Once everything is ready, including provid
 
 #### Document details about the change and/or link to any existing documents with that information.
 
-> *insert detail here*
+> *replace this with your details*
 
 #### Test the change in appropriate development environment
 
-> *insert any notes about testing here or ignore this if there is nothing to know*
+> *replace this with any notes about testing or ignore if there is nothing to know*
 
 #### List the applications that will be affected by this change.
 
-- *list affected applications here*
+- *replace this with the list affected applications*
 
 #### List the intended audience for the change.
 
 *The audience is generally not the reviewers who will approve the PR, but the consumers of the change*
 
-- *list impacted audience here*
+- *replace this with intended audience*
 
 #### Notify the appropriate audiences of the change and the timing of deployment.
 
-> *Provide details showing that the intended audience has been notified, or why they don't need to be notified*
+> *replace this with details showing that the intended audience has been notified, or why they don't need to be notified*
 
 
 #### If and ONLY if this change cannot be rolled back with a simple 'git revert', document the updated rollback procedures.
