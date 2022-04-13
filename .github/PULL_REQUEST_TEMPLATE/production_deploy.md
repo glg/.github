@@ -27,7 +27,7 @@ Just start with your PR in **Draft**. Once everything is ready, including provid
 > *replace this with details showing that the intended audience has been notified, or why they don't need to be notified*
 
 
-#### If and ONLY if this change cannot be rolled back with a simple 'git revert', document the updated rollback procedures.
+#### If and ONLY if this change cannot be rolled back with a simple 'git revert', replace the item below with the list of steps to rollback.
 
 - This PR only requires a GIT revert to be rolled back
 
