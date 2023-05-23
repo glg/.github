@@ -1,10 +1,13 @@
 # vi:syntax=yaml
 name: Build Image and Push to glgapp ECR
 on:
+  # This provides a button in the actions tab to run this on demand
+  workflow_dispatch:
   push:
     # You can set these branches to any that you want to build and push images from
     branches:
       [ $default-branch ]
+    # Set paths you can edit without triggering automated builds
     paths-ignore:
       - 'docs/**'
       - 'README.md'
@@ -19,6 +22,11 @@ jobs:
       # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
       - uses: glg/build-and-push@main
         with:
+          # If you are pushing to a different account than glgapp, change these 3 lines.
           ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
           access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
           secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
+          # Uncomment if you have private repo dependancies in your package.json
+          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
+          # Uncomment if you have private package dependancies in your package.json
+          # github_packages_token: ${{secrets.GH_PACKAGE_REGISTRY_READ_TOKEN}}
