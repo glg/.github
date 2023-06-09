@@ -1,0 +1,42 @@
+# vi:syntax=yaml
+name: Build ARM64 Image and Push to glgapp ECR
+on:
+  # This provides a button in the actions tab to run this on demand
+  workflow_dispatch:
+  push:
+    # You can set these branches to any that you want to build and push images from
+    branches: [$default-branch]
+    # Set paths you can edit without triggering automated builds
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+
+jobs:
+  build-and-push-glgapp-ecr:
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks out the code from this repo
+      - uses: actions/checkout@v3
+
+      # This sets up qemu to allow crossbuilding for arm64
+      - uses: docker/setup-qemu-action@27d0a4f181a40b142cce983c5393082c365d1480
+        with:
+          platforms: linux/arm64
+      # This sets up an enables the docker buildx builder
+      - uses: docker/setup-buildx-action@0d135e0c2fc0dba0729c1a47ecfcf5a3c7f8579e
+        with:
+          install: true
+          version: latest
+      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
+      - uses: glg/build-and-push@main
+        with:
+          # This tells our action to build for arm64
+          platform: linux/arm64
+          # If you are pushing to a different account than glgapp, change these 3 lines.
+          ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
+          access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
+          secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
+          # Uncomment if you have private repo dependancies in your package.json
+          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
+          # Uncomment if you have private package dependancies in your package.json
+          # github_packages_token: ${{secrets.GH_PACKAGE_REGISTRY_READ_TOKEN}}
