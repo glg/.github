@@ -1,0 +1,5 @@
+{
+  "name": "Crossbuild for ARM64 and Push to ECR Workflow",
+  "description": "Builds a Docker image for arm64 compute from your Dockerfile and pushes it to ECR in the glgapp account",
+  "filePatterns": "^Dockerfile"
+}
