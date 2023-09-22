@@ -1,0 +1,5 @@
+{
+  "name": "Build and Push (x86_64 and arm64) to ECR Workflow",
+  "description": "Builds both x86_64 and arm64 versions of your Docker image from your Dockerfile and pushes it to ECR in the glgapp account",
+  "filePatterns": "^Dockerfile"
+}
