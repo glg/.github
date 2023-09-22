@@ -1,0 +1,67 @@
+# vi:syntax=yaml
+name: Build and Push to ECR
+on:
+  # This provides a button in the actions tab to run this on demand
+  workflow_dispatch:
+  push:
+    # You can set these branches to any that you want to build and push images from
+    branches: [$default-branch]
+    # Set paths you can edit without triggering automated builds
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks out the code from this repo
+      - uses: actions/checkout@v3
+
+      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
+      - uses: glg/build-and-push@main
+        with:
+          # If you are pushing to a different account than glgapp, change these 3 lines.
+          ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
+          access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
+          secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
+          # Uncomment if you have private repo dependancies in your package.json
+          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
+          # Uncomment if you have private package dependancies in your package.json
+          # github_packages_token: ${{ secrets.GH_PACKAGE_REGISTRY_READ_TOKEN }}
+
+  build-and-push-arm:
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks out the code from this repo
+      - uses: actions/checkout@v3
+
+      # This sets up qemu to build arm64 images on amd64 runners
+      # This SHA is version 3.0.0 of the action
+      - uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3
+        with:
+          platforms: linux/arm64
+
+      # This sets buildx to assist in cross-architecture builds
+      # This SHA is version 3.0.0 of the action
+      - uses: docker/setup-buildx-action@0f95db51fddba0c2d1ec667646a06c2ce06100226
+        with:
+          install: true
+          version: latest
+
+      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
+      - uses: glg/build-and-push@main
+        with:
+          # If you are pushing to a different account than glgapp, change these 3 lines.
+          ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
+          access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
+          secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
+          # These are needed to be set for the arm64 builds
+          healthcheck: ""
+          platform: linux/arm64
+          # This is the tag-prefix that arm builds will have
+          image_tag: arm64
+          # Uncomment if you have private repo dependancies in your package.json
+          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
+          # Uncomment if you have private package dependancies in your package.json
+          # github_packages_token: ${{ secrets.GH_PACKAGE_REGISTRY_READ_TOKEN }}
