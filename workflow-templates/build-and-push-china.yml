@@ -1,0 +1,79 @@
+# vi:syntax=yaml
+##############################################################################################################################
+# Project: GDS China
+# Author:  David Dai
+# Date:    Aug 10, 2021
+# TEAM:    SRE
+#
+# This github actions is to be used for building and pushing the image
+# to AWS China ECR. Following optional variables are optional
+#
+# - HEALTHCHECK
+#   - Description: healthcheck path, like /healthcheck
+#   - default: /healthcheck
+#
+# - ENV_FILE
+#   - Description: File containing environment variables required for app to run and pass healthcheck
+#
+# - ARG_BUILD_CONFIG
+#   - Description: File used during build (usually in postinstall) to install your app
+#
+# Q: How to add the options variables?
+# A: You need to add the variable name in the env-vars-for-codebuild block and assign the value in env block.
+#
+# Q: Where can I find the logs?
+# A: Click the Actions button in the repository, find the latest action with the name Build Image and Push to AWS China ECR
+#    Open it.
+#
+# Q: How can I trigger this action for different branch?
+# A: Add the branch name in the section of on, then push, then branches, this will trigger workflow when it's been pushed or merged.
+#    You can get more details here: https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+#
+# Q: It shows error: Project cannot be found: arn:aws-cn:codebuild:***:***:project/gds-china-gh-action-image-builder
+# A: If you have run glgroup ecr register-github-repo with -a to different account, you need to run this cli again but w/o -a option.
+#    With that said, secrets GLGAPP_ECR_AWS_ACCESS_KEY_ID and GLGAPP_ECR_AWS_SECRET_ACCESS_KEY will be created.
+#
+# Further question? File a ticket to SRE.
+##############################################################################################################################
+
+name: Build Image and Push to AWS China ECR
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [$default-branch]
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+
+jobs:
+  deploy:
+    name: Build Image for GDS China
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Execute Build and Deploy
+        uses: aws-actions/aws-codebuild-run-build@v1.0.12
+        with:
+          project-name: gds-china-gh-action-image-builder
+          disable-source-override: true
+          env-vars-for-codebuild: |
+            AWS_REGION,
+            AWS_CHINA_REGION,
+            AWS_CHINA_ECR_ARN,
+            HEALTHCHECK
+        env:
+          AWS_REGION: us-east-1
+          AWS_CHINA_REGION: cn-north-1
+          AWS_CHINA_ECR_ARN: 272054111736.dkr.ecr.cn-north-1.amazonaws.com.cn
+          HEALTHCHECK: /healthcheck
