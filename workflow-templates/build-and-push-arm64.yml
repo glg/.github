@@ -40,6 +40,8 @@ jobs:
           ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
           access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
           secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
+          # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
+          # sync_to_aws_china: true
           # Uncomment if you have private repo dependancies in your package.json
           # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
           # Uncomment if you have private package dependancies in your package.json
