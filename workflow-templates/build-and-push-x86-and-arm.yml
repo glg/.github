@@ -61,9 +61,10 @@ jobs:
           # These are needed to be set for the arm64 builds
           healthcheck: ""
           platform: linux/arm64
+          image_tag: arm64
           # This is the tag-prefix that arm builds will have
           # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
-          # sync_to_aws_china: trueimage_tag: arm64
+          # sync_to_aws_china: true
           # Uncomment if you have private repo dependancies in your package.json
           # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
           # Uncomment if you have private package dependancies in your package.json
