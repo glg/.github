@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       # Checks out the code from this repo
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
       - uses: glg/build-and-push@main
