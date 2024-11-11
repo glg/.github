@@ -51,7 +51,7 @@ jobs:
           ) > ${FILE_NAME}
 
       - name: Archive things
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: reports
           path: ${{ env.FILE_NAME }} 
