@@ -13,10 +13,10 @@ on:
 
 jobs:
   build-and-push-glgapp-ecr:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       # Checks out the code from this repo
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # This sets up qemu to build arm64 images on amd64 runners
       # This SHA is version 3.0.0 of the action
