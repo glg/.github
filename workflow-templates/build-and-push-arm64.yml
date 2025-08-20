@@ -1,5 +1,5 @@
 # vi:syntax=yaml
-name: Build ARM64 Image and Push to glgapp ECR
+name: Build ARM64 Image and Push toggp ECR
 on:
   # This provides a button in the actions tab to run this on demand
   workflow_dispatch:
@@ -12,11 +12,27 @@ on:
       - "README.md"
 
 jobs:
-  build-and-push-glgapp-ecr:
+  build-and-push-ecr:
+    strategy:
+      matrix:
+        # If you need to push to multiple accounts, you can add them here
+        aws_account_ids: ["868468680417"] # glgapp account
+
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: read 
+
     steps:
-      # Checks out the code from this repo
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      - name: Setup ECR OIDC Credentials
+        id: aws-setup
+        uses: glg/setup-ecr-aws-oidc@main
+        with:
+          aws_account_id: ${{ matrix.aws_account_ids }}
 
       # This sets up qemu to build arm64 images on amd64 runners
       # This SHA is version 3.0.0 of the action
@@ -34,12 +50,10 @@ jobs:
       # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
       - uses: glg/build-and-push@main
         with:
+          ecr_uri: ${{ steps.aws-setup.outputs.ecr_uri }}
           # This tells our action to build for arm64
           platform: linux/arm64
           # If you are pushing to a different account than glgapp, change these 3 lines.
-          ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
-          access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
-          secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
           # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
           # sync_to_aws_china: true
           # Uncomment if you have private repo dependancies in your package.json
