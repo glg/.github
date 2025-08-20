@@ -15,9 +15,17 @@ jobs:
   build-and-push-ecr:
     strategy:
       matrix:
-        # If you need to push to multiple accounts, you can add them here
-        aws_account_ids: ["868468680417"] # glgapp account
-
+        # To push to additional AWS accounts, uncomment the desired lines below.
+        aws_account_ids: [
+          "868468680417",  # glgapp
+        #   "160069906927",  # search
+        #   "677895703113",  # insights
+        #   "048313327362",  # conference-platform
+        #   "988857891049",  # prototype
+        #   "925358234994",  # gds-reverse-proxy-vault
+        #   "196017527820",  # infrastructure-management
+        #   "368307259700"   # ai-experiments
+        ]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
