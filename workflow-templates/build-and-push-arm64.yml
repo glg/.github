@@ -1,5 +1,5 @@
 # vi:syntax=yaml
-name: Build ARM64 Image and Push toggp ECR
+name: Build ARM64 Image and Push to ECR
 on:
   # This provides a button in the actions tab to run this on demand
   workflow_dispatch:
