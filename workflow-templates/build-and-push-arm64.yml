@@ -1,5 +1,5 @@
 # vi:syntax=yaml
-name: Build ARM64 Image and Push to glgapp ECR
+name: Build ARM64 Image and Push to ECR
 on:
   # This provides a button in the actions tab to run this on demand
   workflow_dispatch:
@@ -12,21 +12,39 @@ on:
       - "README.md"
 
 jobs:
-  build-and-push-glgapp-ecr:
+  build-and-push-ecr:
+    strategy:
+      matrix:
+        # To push to additional AWS accounts, uncomment the desired lines below.
+        # AWS account IDs can be found at: https://blog.glgresearch.com/know/glg-deployment-system-gds/deploying-a-service/index.html#manually-setting-up-the-workflow
+        aws_account_ids:
+          - "123456789012"  # Replace with your AWS account ID(s)
+
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: read 
+
     steps:
-      # Checks out the code from this repo
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      - name: Setup ECR OIDC Credentials
+        id: aws-setup
+        uses: glg/setup-ecr-aws-oidc@main
+        with:
+          aws_account_id: ${{ matrix.aws_account_ids }}
 
       # This sets up qemu to build arm64 images on amd64 runners
-      # This SHA is version 3.0.0 of the action
-      - uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3
+      # This SHA is version v3.6.0 of the action
+      - uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392
         with:
           platforms: linux/arm64
 
       # This sets buildx to assist in cross-architecture builds
-      # This SHA is version 3.0.0 of the action
-      - uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226
+      # This SHA is version v3.11.1 of the action
+      - uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435
         with:
           install: true
           version: latest
@@ -34,12 +52,10 @@ jobs:
       # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
       - uses: glg/build-and-push@main
         with:
+          ecr_uri: ${{ steps.aws-setup.outputs.ecr_uri }}
           # This tells our action to build for arm64
           platform: linux/arm64
           # If you are pushing to a different account than glgapp, change these 3 lines.
-          ecr_uri: ${{secrets.GLGAPP_ECR_URI}}
-          access_key_id: ${{secrets.GLGAPP_ECR_AWS_ACCESS_KEY_ID}}
-          secret_access_key: ${{secrets.GLGAPP_ECR_AWS_SECRET_ACCESS_KEY}}
           # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
           # sync_to_aws_china: true
           # Uncomment if you have private repo dependancies in your package.json
