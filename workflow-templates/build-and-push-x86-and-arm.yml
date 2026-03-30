@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
  
       - name: Setup ECR OIDC Credentials
         id: aws-setup
@@ -63,7 +63,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
  
       - name: Setup ECR OIDC Credentials
         id: aws-setup-arm
