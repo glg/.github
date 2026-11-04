@@ -12,89 +12,57 @@ on:
       - "README.md"
 
 jobs:
-  build-and-push-ecr:
-    strategy:
-      matrix:
-        # To push to additional AWS accounts, uncomment the desired lines below.
-        # AWS account IDs can be found at: https://blog.glgresearch.com/know/glg-deployment-system-gds/deploying-a-service/index.html#manually-setting-up-the-workflow
-        aws_account_ids:
-          - "123456789012"  # Replace with your AWS account ID(s)
-
+  build-and-push:
+    name: Build and Push (${{ matrix.target_architecture }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target_architecture: [amd64, arm64]
+        include:
+          - target_architecture: amd64
+            platform: ""
+            image_tag: latest
+          - target_architecture: arm64
+            platform: linux/arm64
+            image_tag: arm64
+
     permissions:
       id-token: write
       contents: read
-      pull-requests: read 
+      pull-requests: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
- 
-      - name: Setup ECR OIDC Credentials
-        id: aws-setup
-        uses: glg/setup-ecr-aws-oidc@main
-        with:
-          aws_account_id: ${{ matrix.aws_account_ids }}
 
-      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
-      - uses: glg/build-and-push@main
-        with:
-          ecr_uri: ${{ steps.aws-setup.outputs.ecr_uri }}
-          # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
-          # sync_to_aws_china: true
-          # Uncomment if you have private repo dependancies in your package.json
-          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
-          # Uncomment if you have private package dependancies in your package.json
-          # github_packages_token: ${{ secrets.GH_PACKAGE_REGISTRY_READ_TOKEN }}
-
-  build-and-push-ecr-arm:
-    strategy:
-      matrix:
-        # To push to additional AWS accounts, uncomment the desired lines below.
-        # AWS account IDs can be found at: https://blog.glgresearch.com/know/glg-deployment-system-gds/deploying-a-service/index.html#manually-setting-up-the-workflow
-        aws_account_ids:
-          - "123456789012"  # Replace with your AWS account ID(s)
-
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-      pull-requests: read 
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
- 
-      - name: Setup ECR OIDC Credentials
-        id: aws-setup-arm
-        uses: glg/setup-ecr-aws-oidc@main
-        with:
-          aws_account_id: ${{ matrix.aws_account_ids }}
-
-      # This sets up qemu to build arm64 images on amd64 runners
-      # This SHA is version v3.6.0 of the action
-      - uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392
+      - uses: docker/setup-qemu-action@v4.2.0
+        if: matrix.target_architecture == 'arm64'
         with:
           platforms: linux/arm64
 
-      # This sets buildx to assist in cross-architecture builds
-      # This SHA is version v3.11.1 of the action
-      - uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435
+      - uses: docker/setup-buildx-action@v4.2.0
+        if: matrix.target_architecture == 'arm64'
         with:
-          install: true
           version: latest
 
-      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
-      - uses: glg/build-and-push@main
+      - name: Build
+        uses: glg/build-and-push/build@v1
+        id: build
         with:
-          ecr_uri: ${{ steps.aws-setup-arm.outputs.ecr_uri }}
-          # These are needed to be set for the arm64 builds
-          platform: linux/arm64
-          # This is the tag-prefix that arm builds will have
-          image_tag: arm64
-          # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
-          # sync_to_aws_china: true
-          # Uncomment if you have private repo dependancies in your package.json
-          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
-          # Uncomment if you have private package dependancies in your package.json
-          # github_packages_token: ${{ secrets.GH_PACKAGE_REGISTRY_READ_TOKEN }}
+          platform: ${{ matrix.platform }}
+          image_tag: ${{ matrix.image_tag }}
+
+      - name: Healthcheck
+        uses: glg/build-and-push/healthcheck@v1
+        with:
+          image_name: ${{ steps.build.outputs.image_name }}
+          healthcheck: /
+          port: 3000
+          healthcheck_max_attempts: 5
+
+      - name: Push
+        uses: glg/build-and-push/push@v1
+        with:
+          image_name: ${{ steps.build.outputs.image_name }}
+          #sync_to_aws_china: true
