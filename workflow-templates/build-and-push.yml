@@ -5,45 +5,42 @@ on:
   workflow_dispatch:
   push:
     # You can set these branches to any that you want to build and push images from
-    branches:
-      [ $default-branch ]
+    branches: [$default-branch]
     # Set paths you can edit without triggering automated builds
     paths-ignore:
-      - 'docs/**'
-      - 'README.md'
+      - "docs/**"
+      - "README.md"
 
 jobs:
-  build-and-push-ecr:
-    strategy:
-      matrix:
-        # To push to additional AWS accounts, uncomment the desired lines below.
-        # AWS account IDs can be found at: https://blog.glgresearch.com/know/glg-deployment-system-gds/deploying-a-service/index.html#manually-setting-up-the-workflow
-        aws_account_ids:
-          - "123456789012"  # Replace with your AWS account ID(s)
-
+  build-and-push:
+    name: Build and Push (amd64)
     runs-on: ubuntu-latest
+
     permissions:
       id-token: write
       contents: read
-      pull-requests: read 
+      pull-requests: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
- 
-      - name: Setup ECR OIDC Credentials
-        id: aws-setup
-        uses: glg/setup-ecr-aws-oidc@main
-        with:
-          aws_account_id: ${{ matrix.aws_account_ids }}
 
-      # Builds a docker image from ./dockerfile, and pushes it to our ECR repository
-      - uses: glg/build-and-push@main
+      - name: Build
+        uses: glg/build-and-push/build@v1
+        id: build
         with:
-          ecr_uri: ${{ steps.aws-setup.outputs.ecr_uri }}
-          # Uncomment if you are build you image in glgapp account and want to push the image to AWS China, it is only applicable for glgapp account.
-          # sync_to_aws_china: true
-          # Uncomment if you have private repo dependancies in your package.json
-          # github_ssh_key: ${{ secrets.DEPLOYMENT_SSH_KEY }}
-          # Uncomment if you have private package dependancies in your package.json
-          # github_packages_token: ${{secrets.GH_PACKAGE_REGISTRY_READ_TOKEN}}
+          image_tag: latest
+
+      - name: Healthcheck
+        uses: glg/build-and-push/healthcheck@v1
+        with:
+          image_name: ${{ steps.build.outputs.image_name }}
+          healthcheck: /
+          port: 3000
+          healthcheck_max_attempts: 5
+
+      - name: Push
+        uses: glg/build-and-push/push@v1
+        with:
+          image_name: ${{ steps.build.outputs.image_name }}
+          #sync_to_aws_china: true
